@@ -1,12 +1,14 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <div class="container">  
     <a class="navbar-brand" href="#">Serendipity</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExDefault" aria-controls="navbarsExDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+    
     <div class="collapse navbar-collapse" id="navbarsExDefault">
-      <ul class="navbar-nav mr-auto">
+      
+      <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
         <li class="nav-item ">
           <a class="nav-link" href="#">Matches </a>
         </li>
@@ -16,11 +18,36 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Messages</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Username" >
-        <input class="form-control mr-sm-2" type="password" placeholder="Password" >
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+      
+      <div *ngIf="loggedIn">
+        <a class="dropdown-toggle text-light">Welcome User</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">Edit Profile</a>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </div>
+      
+      <form *ngIf="!loggedIn" #loginForm="ngForm" class="form-inline ml-auto" (ngSubmit)="login()" autocomplete="off">
+        <input 
+        name="username"
+        [(ngModel)]="model.username"
+        class="form-control mr-sm-2" 
+        type="text" 
+        placeholder="Username" >
+        
+        <input 
+        name="password"
+        [(ngModel)]="model.password"
+        class="form-control mr-sm-2" 
+        type="password" 
+        placeholder="Password" >
+        
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
       </form>
     </div>
-  </nav>
+  </div>
+</nav>
