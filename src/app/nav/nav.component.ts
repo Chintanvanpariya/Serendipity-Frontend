@@ -9,7 +9,7 @@ import { AccountService } from '../_services/account.service';
 export class NavComponent implements OnInit {
 
   model : any ={};
-  loggedIn : boolean=true ;
+  loggedIn : boolean ;
   constructor(
     private accountService : AccountService  
   ) { }
