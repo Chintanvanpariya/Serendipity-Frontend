@@ -25,7 +25,7 @@
 
       <div class="btn-group" *ngIf="loggedIn" dropdown>
         <a dropdownToggle type="button" class="dropdown-toggle text-light">Welcome User</a>
-        <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-disabled-item">
+        <ul *dropdownMenu class="dropdown-menu " role="menu" aria-labelledby="button-disabled-item">
           <li><a class="dropdown-item">Edit Profile</a></li>
           <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
         </ul>
