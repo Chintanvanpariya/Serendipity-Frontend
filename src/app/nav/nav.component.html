@@ -8,7 +8,7 @@
 
     <div class="collapse navbar-collapse" id="navbarsExDefault">
 
-      <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
+      <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$|async">
         <li class="nav-item ">
           <a class="nav-link" href="#">Matches </a>
         </li>
@@ -18,12 +18,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Messages</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
       </ul>
 
-      <div class="btn-group" *ngIf="loggedIn" dropdown>
+      <div class="btn-group" *ngIf="accountService.currentUser$|async" dropdown>
         <a dropdownToggle type="button" class="dropdown-toggle text-light">Welcome User</a>
         <ul *dropdownMenu class="dropdown-menu " role="menu" aria-labelledby="button-disabled-item">
           <li><a class="dropdown-item">Edit Profile</a></li>
@@ -31,7 +28,7 @@
         </ul>
       </div>
 
-      <form *ngIf="!loggedIn" #loginForm="ngForm" class="form-inline ml-auto" (ngSubmit)="login()" autocomplete="off">
+      <form *ngIf="(accountService.currentUser$|async)===null" #loginForm="ngForm" class="form-inline ml-auto" (ngSubmit)="login()" autocomplete="off">
         <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text"
           placeholder="Username">
 
