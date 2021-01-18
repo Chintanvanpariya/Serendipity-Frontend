@@ -2,3 +2,9 @@ a.dropdown-item:hover {
     cursor:pointer;
     background-color: lightblue;
 }
+
+.heartIcon{
+    width: 30px;
+    outline: auto;
+    margin-right: 6px;
+}

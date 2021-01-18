@@ -15,6 +15,10 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
+  setCurrentUser(user:User){
+    this.currentUserSource.next(user);
+  }
+
   login(model:any):Observable<any>{
     return this.http.post<any>(this.baseUrl + 'account/login' , model).pipe(
       map((response:User)=> {

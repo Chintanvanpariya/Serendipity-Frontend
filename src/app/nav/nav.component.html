@@ -1,42 +1,44 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="#">Serendipity</a>
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active"><img src="./../../favicon.ico" class="heartIcon">Serendipity</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExDefault"
-      aria-controls="navbarsExDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExDefault">
-
-      <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$|async">
+    aria-controls="navbarsExDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarsExDefault">
+    
+    <ul class="navbar-nav mr-auto" >
+      <ng-container *ngIf="accountService.currentUser$|async">
         <li class="nav-item ">
-          <a class="nav-link" href="#">Matches </a>
+          <a class="nav-link " routerLink="/members" routerLinkActive="active">Matches </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">List</a>
+          <a class="nav-link" routerLink="/lists" routerLinkActive="active">List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
+          <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
         </li>
+      </ng-container>
+    </ul>
+    
+    <div class="btn-group" *ngIf="accountService.currentUser$|async as user" dropdown>
+      <a dropdownToggle type="button" class="dropdown-toggle text-light">{{user.username|titlecase}}</a>
+      <ul *dropdownMenu class="dropdown-menu " role="menu" aria-labelledby="button-disabled-item">
+        <li><a class="dropdown-item">Edit Profile</a></li>
+        <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
       </ul>
-
-      <div class="btn-group" *ngIf="accountService.currentUser$|async" dropdown>
-        <a dropdownToggle type="button" class="dropdown-toggle text-light">Welcome User</a>
-        <ul *dropdownMenu class="dropdown-menu " role="menu" aria-labelledby="button-disabled-item">
-          <li><a class="dropdown-item">Edit Profile</a></li>
-          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
-        </ul>
-      </div>
-
-      <form *ngIf="(accountService.currentUser$|async)===null" #loginForm="ngForm" class="form-inline ml-auto" (ngSubmit)="login()" autocomplete="off">
-        <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text"
-          placeholder="Username">
-
-        <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password"
-          placeholder="Password">
-
-        <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
-      </form>
     </div>
+    
+    <form *ngIf="(accountService.currentUser$|async)===null" #loginForm="ngForm" class="form-inline ml-auto" (ngSubmit)="login()" autocomplete="off">
+      <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text"
+      placeholder="Username">
+      
+      <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password"
+      placeholder="Password">
+      
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+    </form>
   </div>
+</div>
 </nav>
