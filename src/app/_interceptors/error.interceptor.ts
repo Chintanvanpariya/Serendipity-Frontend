@@ -50,7 +50,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 this.router.navigateByUrl('/server-error',navigationExtras);
                           break;
             default:
-              this.toast.error("something enexpected went wrong");
+              this.toast.error("something unexpected went wrong");
               console.log(error);
               
               break;
