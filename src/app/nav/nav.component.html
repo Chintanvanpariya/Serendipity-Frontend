@@ -31,7 +31,7 @@
     <div class="btn-group" *ngIf="accountService.currentUser$|async as user" dropdown>
       <a dropdownToggle type="button" class="dropdown-toggle text-light">{{user.username|titlecase}}</a>
       <ul *dropdownMenu class="dropdown-menu " role="menu" aria-labelledby="button-disabled-item">
-        <li><a class="dropdown-item">Edit Profile</a></li>
+        <li><a class="dropdown-item" routerLink="member/edit">Edit Profile</a></li>
         <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
       </ul>
     </div>
