@@ -10,7 +10,10 @@ import { AccountService } from '../_services/account.service';
 })
 export class NavComponent implements OnInit {
 
-  model : any ={};
+  model : any ={
+    "username":"lisa",
+    "password":"Pa$$w0rd"
+  };
 
   constructor(
     public accountService : AccountService,

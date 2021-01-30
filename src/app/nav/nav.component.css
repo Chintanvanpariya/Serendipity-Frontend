@@ -8,3 +8,9 @@ a.dropdown-item:hover {
     outline: auto;
     margin-right: 6px;
 }
+
+img{
+    max-height: 40px;
+    border: 2px solid white;
+    display: inline;
+}
