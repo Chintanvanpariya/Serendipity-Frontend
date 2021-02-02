@@ -29,7 +29,7 @@
     
     
     <div class="btn-group" *ngIf="accountService.currentUser$|async as user" dropdown>
-      <img src="{{user.photoUrl}}" alt="{{user.username}}">
+      <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
       <a dropdownToggle type="button" class="ml-2 dropdown-toggle text-light">{{user.username|titlecase}}</a>
       <ul *dropdownMenu class="dropdown-menu " role="menu" aria-labelledby="button-disabled-item">
         <li><a class="dropdown-item" routerLink="member/edit">Edit Profile</a></li>
